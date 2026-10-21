@@ -57,14 +57,31 @@ st.subheader("Sprzedaż według kanału")
 tabela = sprzedaz_wg_kanalu(
     df_filtr
 )
-st.dataframe(tabela)
 
-if not tabela.empty:
-    st.bar_chart(
-        tabela.set_index("kanal")[
-            "suma_sprzedazy"
-        ]
-    )
+kol_tabela, kol_wykres = st.columns(2)
+
+with kol_tabela:
+    st.dataframe(tabela)
+
+with kol_wykres:
+    if not tabela.empty:
+        kolory = {"internet": "#1f77b4", "sklep": "#ff7f0e"}
+
+        fig, ax = plt.subplots(figsize=(5, 3.5))
+        slupki = ax.bar(
+            tabela["kanal"],
+            tabela["suma_sprzedazy"],
+            color=[kolory.get(k, "#888888") for k in tabela["kanal"]],
+            width=0.5,
+        )
+        ax.bar_label(slupki, fmt="%d zł", padding=3)
+        ax.set_ylim(0, tabela["suma_sprzedazy"].max() * 1.15)
+        ax.set_ylabel("Suma sprzedaży [zł]")
+        ax.set_xlabel("Kanał")
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
+        fig.tight_layout()
+        st.pyplot(fig)
 
 st.subheader("Dane po filtrowaniu")
 st.dataframe(df_filtr)
