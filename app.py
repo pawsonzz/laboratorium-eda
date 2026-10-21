@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
+
 from analiza import (
     wczytaj_dane,
     wyczysc_dane,
