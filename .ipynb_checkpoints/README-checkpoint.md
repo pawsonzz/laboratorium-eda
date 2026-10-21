@@ -21,6 +21,10 @@ dlatego dane są czyszczone przed analizą.
 
 Python, pandas, matplotlib, Jupyter, pytest, Streamlit, GitHub, Render
 
+## Aplikacja
+
+https://laboratorium-eda-un3k.onrender.com
+
 ## Struktura projektu
 
 ```
@@ -47,10 +51,6 @@ pip install jupyterlab pytest
 python -m pytest -q
 streamlit run app.py
 ```
-
-## Aplikacja
-
-https://ADRES-APLIKACJI.onrender.com
 
 ## Wnioski
 

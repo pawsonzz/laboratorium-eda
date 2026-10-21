@@ -8,7 +8,7 @@ from analiza import (
 )
 
 st.set_page_config(
-    page_title="Analiza sprzedaży",
+    page_title="Analiza sprzedaży - projekt laboratoryjny",
     layout="wide"
 )
 
